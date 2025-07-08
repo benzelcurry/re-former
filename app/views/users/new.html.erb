@@ -1,3 +1,18 @@
 <body>
   <h1>New Route for Users</h1>
+
+  <form action="/users" method="POST" accept-charset="UTF-8" data-turbo="false">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username">
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <button type="submit">Create Account</button>
+  </form>
 </body>
