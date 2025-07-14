@@ -1,32 +1,23 @@
 <body>
   <h1>New Route for Users</h1>
 
-   <form action="/users" method="POST" accept-charset="UTF-8" data-turbo="false">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="user[username]">
+  <%= form_with model: @user do |form| %>
+    <div>
+      <%= form.label :username %>
+      <%= form.text_field :username %>
+    </div>
 
-    <label for="email">Email</label>
-    <input type="text" id="email" name="user[email]">
+    <div>
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="user[password]">
+    <div>
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
 
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-    <button type="submit">Create Account</button>
-  </form>
-
-  <%= form_tag("/users") do %>
-    <%= label_tag(:username, "Username") %>
-    <%= text_field_tag(:username) %>
-
-    <%= label_tag(:email, "Email") %>
-    <%= email_field_tag(:email) %>
-
-    <%= label_tag(:password, "Password") %>
-    <%= password_field_tag(:password) %>
-
-    <%= submit_tag("Create Account")%>
+    <%= form.submit %>
   <% end %>
 
   <% if @user && @user.errors.any? %>
